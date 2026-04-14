@@ -1,0 +1,859 @@
+{
+  "name": "AI-Summarizer-RSSHub-to-Feishu_Publilc",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -96,
+        432
+      ],
+      "id": "ef97e532-38e1-4fd3-b498-338189f4860d",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://feeds.feedburner.com/ruanyifeng",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        176
+      ],
+      "id": "2984b84d-a3c5-4e2e-a1ba-eeea23bd9c6b",
+      "name": "阮一峰的网络日志"
+    },
+    {
+      "parameters": {
+        "url": "https://hnrss.org/newest?points=300",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "2a71bbbf-17c2-418a-9472-a665819f6b3c",
+      "name": "Hacker News"
+    },
+    {
+      "parameters": {
+        "url": "https://sspai.com/feed",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        352
+      ],
+      "id": "63056a66-91dc-451d-87df-ba2124844dad",
+      "name": "少数派"
+    },
+    {
+      "parameters": {
+        "url": "https://aigc-weekly.agi.li/rss.xml",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        224,
+        512
+      ],
+      "id": "4c01d551-fee6-4549-8633-fe420102f565",
+      "name": "AIGC 周刊"
+    },
+    {
+      "parameters": {
+        "url": "https://plink.anyfeeder.com/weixin/lifeweek",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        224,
+        688
+      ],
+      "id": "bd3ce287-410c-4bd0-b977-6b089b880a38",
+      "name": "三联生活周刊"
+    },
+    {
+      "parameters": {
+        "url": "https://plink.anyfeeder.com/people-daily",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        864
+      ],
+      "id": "d127420f-2134-4e23-a8e6-059d4573a861",
+      "name": "人民日报"
+    },
+    {
+      "parameters": {
+        "url": "https://plink.anyfeeder.com/weixin/AI_era",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        1040
+      ],
+      "id": "8826f753-40e5-42dc-889f-63536e5921d4",
+      "name": "新智元"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "566c1ede-df27-432e-a605-ecba84e099a8",
+              "name": "标题",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "46152e4b-ef50-4578-b022-c56ac97844dc",
+              "name": "日期",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "485ee840-7ec6-4ee9-8349-864eb0ffe435",
+              "name": "内容",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "dd30c801-2217-420e-a337-73524894b650",
+              "name": "链接",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "d351f227-bb81-4d39-93e8-8d24771025af",
+              "name": "媒体",
+              "value": "阮一峰的网络日志",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        480,
+        176
+      ],
+      "id": "01c07da3-3a0b-4c24-bdc3-f99c1d3b1a5e",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "566c1ede-df27-432e-a605-ecba84e099a8",
+              "name": "标题",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "46152e4b-ef50-4578-b022-c56ac97844dc",
+              "name": "日期",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "485ee840-7ec6-4ee9-8349-864eb0ffe435",
+              "name": "内容",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "dd30c801-2217-420e-a337-73524894b650",
+              "name": "链接",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "d351f227-bb81-4d39-93e8-8d24771025af",
+              "name": "媒体",
+              "value": "少数派",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        496,
+        352
+      ],
+      "id": "cf8da121-77da-476a-a3f9-1da2f7ca6148",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "566c1ede-df27-432e-a605-ecba84e099a8",
+              "name": "标题",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "46152e4b-ef50-4578-b022-c56ac97844dc",
+              "name": "日期",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "485ee840-7ec6-4ee9-8349-864eb0ffe435",
+              "name": "内容",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "dd30c801-2217-420e-a337-73524894b650",
+              "name": "链接",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "d351f227-bb81-4d39-93e8-8d24771025af",
+              "name": "媒体",
+              "value": "AIGC 周刊",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        496,
+        512
+      ],
+      "id": "0b7a1b25-6c32-40c4-9238-0b8b433728e4",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "566c1ede-df27-432e-a605-ecba84e099a8",
+              "name": "标题",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "46152e4b-ef50-4578-b022-c56ac97844dc",
+              "name": "日期",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "485ee840-7ec6-4ee9-8349-864eb0ffe435",
+              "name": "内容",
+              "value": "={{ $json['content:encodedSnippet'] }}",
+              "type": "string"
+            },
+            {
+              "id": "dd30c801-2217-420e-a337-73524894b650",
+              "name": "链接",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "d351f227-bb81-4d39-93e8-8d24771025af",
+              "name": "媒体",
+              "value": "三联生活周刊",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        496,
+        688
+      ],
+      "id": "980a65a0-32e7-4f90-8a27-6d5421683852",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "566c1ede-df27-432e-a605-ecba84e099a8",
+              "name": "标题",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "46152e4b-ef50-4578-b022-c56ac97844dc",
+              "name": "日期",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "485ee840-7ec6-4ee9-8349-864eb0ffe435",
+              "name": "内容",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "dd30c801-2217-420e-a337-73524894b650",
+              "name": "链接",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "d351f227-bb81-4d39-93e8-8d24771025af",
+              "name": "媒体",
+              "value": "人民日报",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        496,
+        864
+      ],
+      "id": "40d4c161-ff54-4615-ad8f-6d5766d1924c",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "566c1ede-df27-432e-a605-ecba84e099a8",
+              "name": "标题",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "46152e4b-ef50-4578-b022-c56ac97844dc",
+              "name": "日期",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "485ee840-7ec6-4ee9-8349-864eb0ffe435",
+              "name": "内容",
+              "value": "={{ $json['content:encodedSnippet'] }}",
+              "type": "string"
+            },
+            {
+              "id": "dd30c801-2217-420e-a337-73524894b650",
+              "name": "链接",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "d351f227-bb81-4d39-93e8-8d24771025af",
+              "name": "媒体",
+              "value": "新智元",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        496,
+        1040
+      ],
+      "id": "17c5720a-c235-48c8-924e-8f6d4d6809f6",
+      "name": "Edit Fields5"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "277115a4-557d-4185-af93-bc506818d03b",
+              "leftValue": "={{ (new Date() - new Date($json.日期)) / (1000 * 60 * 60) <= 24 }}",
+              "rightValue": "={{ $now.minus({ hours: 12 }) }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        1200,
+        560
+      ],
+      "id": "6217f5ab-43ee-4e06-9d90-102606c616b0",
+      "name": "Filter2"
+    },
+    {
+      "parameters": {
+        "numberInputs": 7
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        880,
+        544
+      ],
+      "id": "0bb4d205-3a77-4c6f-b41e-ecff195fa38a",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "batchSize": 2,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1456,
+        720
+      ],
+      "id": "e14e088a-e912-44ee-9228-4c07d96b76b7",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=# Role\n你是一个资深的科研情报专家，擅长从海量科技新闻中提取核心价值。你的任务是将杂乱的新闻数据转化为一份精炼、专业的学术情报简报。\n\n# Task\n你将收到一组包含多篇文章的 JSON 数据。请针对每篇文章执行以下深度分析并按规定格式输出：\n\n1. 【标题】：保留原始标题，并在前方加上对应的 Emoji（如 ⚛️ 代表量子，🤖 代表AI）。\n2. 【来源链接】：保留原始 URL，以 Markdown 链接形式展示。\n3. 【科研摘要】：\n   - 如果是硬核科研：请用学术口吻总结其物理机制、实验方法或算法突破。\n   - 如果是行业新闻：总结其对生态、商业或技术路径的影响。\n   - 要求：150字以内，逻辑清晰。\n4. 【技术分类】：打上 2-3 个专业标签，例如：[硅基量子点] [Transformer 架构] [单电子晶体管]。\n\n# Output Format (Markdown)\n请严格按以下格式排列，每篇文章之间用 --- 分隔：\n\n## $标题\n- **来源**: $来源媒体 | [点击阅读原文]($来源链接)\n- **技术标签**: $技术分类\n- **核心摘要**: $科研摘要\n\n---\n\n# Constraints\n- 严禁任何开场白或结束语。\n- 语言风格：专业、客观、严谨。\n- 如果数据中包含你熟悉的领域（如量子电路模拟、SET 等），请务必保证术语准确。\n\n# Input Data\n{{ JSON.stringify($json.data) }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        2112,
+        800
+      ],
+      "id": "4726d672-b5e4-4f61-8555-01bbd8b89b59",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1744,
+        752
+      ],
+      "id": "3c16dbde-5cec-4370-9b62-22355cfb78e1",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"msg_type\": \"interactive\",\n  \"card\": {\n    \"schema\": \"2.0\",\n    \"config\": {\n      \"update_multi\": true,\n      \"style\": {\n        \"text_size\": {\n          \"normal_v2\": {\n            \"default\": \"normal\",\n            \"pc\": \"normal\",\n            \"mobile\": \"heading\"\n          }\n        }\n      }\n    },\n    \"body\": {\n      \"direction\": \"vertical\",\n      \"padding\": \"12px 12px 12px 12px\",\n      \"elements\": [\n        {\n          \"tag\": \"markdown\",\n          \"content\": \"{{ $json.output ? JSON.stringify($json.output).slice(1, -1) : '' }}\",\n          \"text_align\": \"left\",\n          \"text_size\": \"normal_v2\",\n          \"margin\": \"0px 0px 0px 0px\"\n        }\n      ]\n    },\n    \"header\": {\n      \"title\": {\n        \"tag\": \"plain_text\",\n        \"content\": \"News {{ $now.format('yyyy-MM-dd') }}\"\n      },\n      \"subtitle\": {\n        \"tag\": \"plain_text\",\n        \"content\": \"\"\n      },\n      \"template\": \"blue\",\n      \"padding\": \"12px 12px 12px 12px\"\n    }\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        2512,
+        880
+      ],
+      "id": "8f0ae57e-53ed-474a-9bd6-059f1d624cda",
+      "name": "HTTP Request",
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "566c1ede-df27-432e-a605-ecba84e099a8",
+              "name": "标题",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "46152e4b-ef50-4578-b022-c56ac97844dc",
+              "name": "日期",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "485ee840-7ec6-4ee9-8349-864eb0ffe435",
+              "name": "内容",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "dd30c801-2217-420e-a337-73524894b650",
+              "name": "链接",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "d351f227-bb81-4d39-93e8-8d24771025af",
+              "name": "媒体",
+              "value": "Hacker News",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        496,
+        -48
+      ],
+      "id": "0c352d9d-60e3-4fdd-aa2c-279c91267023",
+      "name": "Edit Fields6"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        1984,
+        1008
+      ],
+      "id": "d2462ffd-2ec6-4fb8-b47b-b6f4ac7f371a",
+      "name": "Ollama Chat Model"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "少数派",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "阮一峰的网络日志",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "AIGC 周刊",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "三联生活周刊",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "人民日报",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "新智元",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Hacker News",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hacker News": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "三联生活周刊": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "阮一峰的网络日志": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "少数派": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AIGC 周刊": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "人民日报": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "新智元": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 6
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Filter2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "timezone": "Asia/Shanghai",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "1cd5f8c9-4fbf-4806-865c-9fdab4c6a401",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b5ff0891bf036ebf1afb73600edfd2e94160bb5c9d30682a278f3cf8f88d800b"
+  },
+  "id": "7ZUjAkisfeMo2gdR",
+  "tags": []
+}
